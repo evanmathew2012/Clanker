@@ -12,7 +12,7 @@ static HexaServo arm{{ .signalPin = SERVO_1, .startAngle = maxArm, .settleMs = 0
 
 float maxGrip = 5.0f;
 float minGrip = 65.0f;
-static HexaServo grip{{ .signalPin = SERVO_2, .startAngle = maxGrip, .settleMs = 0 }};
+static HexaServo grip{{ .signalPin = SERVO_2, .startAngle = maxGrip, .settleMs = 250 }};
 
 float fspeed = 1.0f; // fast mode
 float mspeed = 0.5f; // medium mode
@@ -87,6 +87,7 @@ public:
         // Runs once on STOP — stop your motors/servos here.
         drive.stop();
         arm.detach();
+        grip.detach();
     }
 };
 
