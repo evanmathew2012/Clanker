@@ -50,7 +50,7 @@ public:
         // overwrite them. To share one part, step aside while a
         // sequence plays:  if (!isActionRunning()) { ... }
         
-        //drive.setScale(gamepad1.pressed(BTN_LB) ? 0.35f : 1.0f); // slow when LB is held
+        //Drive
         drive.drive(gamepad1.leftY(), gamepad1.rightX());
 
         //Speed Mode Telemetry
@@ -62,25 +62,11 @@ public:
         if (gamepad1.pressed(BTN_LB)) {
             float joystick = gamepad1.rightY();
 
-            float position = minArm +
-                ((joystick + 1.0f) / 2.0f) * (maxArm - minArm);
+            float position = maxArm +
+                ((joystick + 1.0f) / 2.0f) * (minArm - maxArm);
 
             arm.setPosition(position);
         }
-        
-        //if (gamepad1.justPressed(BTN_DPAD_UP)) {
-        //    arm.setPosition(maxArm);
-        //}
-        //else if (gamepad1.justPressed(BTN_DPAD_DOWN)) {
-        //    arm.setPosition(minArm);
-        //}
-
-        //else if (gamepad1.justPressed(BTN_DPAD_LEFT)) {
-        //    grip.setPosition(maxGrip);
-        //}
-        //else if (gamepad1.justPressed(BTN_DPAD_RIGHT)) {
-        //    grip.setPosition(minGrip);
-        //}
     }
 
     void stop() override {
